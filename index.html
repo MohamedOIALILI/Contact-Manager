@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini App</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/dist/css/bootstrap-imageupload.css">
+    <style>.table > tbody > tr > td { vertical-align: middle; }</style>
+</head>
+<body style="margin:30px">
+<div class="panel panel-primary">
+    <div class="panel-heading">Tableau de bord</div>
+    <table id="table" class="table table-bordered" >
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Téléphone</th>
+            <th>Photo</th>
+            <th colspan="2" width="1%">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input type="text" class="form-control keyup-min-4 keyup-max-10" name="nom"></td>
+            <td><input type="text" class="form-control keyup-min-4 keyup-max-10" name="prenom"></td>
+            <td><input type="email" class="form-control keyup-email" name="email"></td>
+            <td><input type="tel" class="form-control keyup-phone" name="tel"></td>
+            <td>
+                <div class="imageupload panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title pull-left">Choisissez une photo:</h3>
+                    </div>
+                    <div class="text-center">
+                        <div class="file-tab panel-body">
+                            <label class="btn btn-default btn-file">
+                                <span>Parcourir</span>
+                                <input type="file" name="photo" id="photo">
+                            </label>
+                            <button type="button" class="btn btn-default">Supprimer</button>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td colspan="2"><button name="add" type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-plus"></span></button></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="panel-footer">
+        <blockquote>
+            <footer>Réalisé par : <cite title="auteur">Mohamed OIALILI</cite></footer>
+        </blockquote>
+    </div>
+</div>
+
+<div id="modifyModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content panel-warning">
+            <div class="modal-header panel-heading">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modifier les données</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="modal_nom" class="form-control-label">Nom:</label>
+                        <input type="text" class="form-control keyup-min-4 keyup-max-10" id="modal_nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="modal_prenom" class="form-control-label">Prénom:</label>
+                        <input type="text" class="form-control keyup-min-4 keyup-max-10" id="modal_prenom">
+                    </div>
+                    <div class="form-group">
+                        <label for="modal_email" class="form-control-label">Email:</label>
+                        <input type="email" class="form-control keyup-email" id="modal_email">
+                    </div>
+                    <div class="form-group">
+                        <label for="modal_tel" class="form-control-label">Téléphone:</label>
+                        <input type="tel" class="form-control keyup-phone" id="modal_tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="modal_photo" class="form-control-label">Photo:</label>
+                        <div class="imageupload panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <h3 class="panel-title pull-left">Choisissez une nouvelle une photo:</h3>
+                            </div>
+                            <div class="text-center">
+                                <img class="img-circle" style="margin-top: 15px;display: block;margin-left: auto;margin-right: auto;" width="104" height="136" id="modal_photo">
+                                <div class="file-tab panel-body">
+                                    <label class="btn btn-default btn-file">
+                                        <span>Parcourir</span>
+                                        <input type="file" name="nv_photo" id="nv_photo">
+                                    </label>
+                                    <button type="button" class="btn btn-default" id="modal_supp">Supprimer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" name="modify" class="btn btn-warning">Modifier</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="addModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content panel-info">
+            <div class="modal-header panel-heading">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Information</h4>
+            </div>
+            <div class="modal-body">
+                <h3 id="message"></h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="bower_components/dist/js/jquery.popconfirm.js"></script>
+<script type="text/javascript" src="bower_components/dist/js/script.js"></script>
+<script type="text/javascript" src="bower_components/dist/js/bootstrap-imageupload.js"></script>
+
+</body>
+</html>
